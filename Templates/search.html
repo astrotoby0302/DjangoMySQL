@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Blog</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+</head>
+{% comment %} <stye>
+    table,
+    th,
+    td 
+    {
+        border: 2px solid;
+    }
+</stye> {% endcomment %}
+
+
+<body>
+    <h2 class="mt-5" style="text-align:center"> Blog Informationn </h2>
+    <div class="table-responsive container mt-5">
+        <table class="table mt-5" align="center" style="margin: 0px auto;">
+            <thead>
+                <tr>
+                    <th scope="col">Blog ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Edit Blog</th>
+                    <th scope="col">Remove Blog</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for blog in blogs %}
+                <tr>
+                    <td>{{blog.BlogId}}</td>
+                    <td>{{blog.Title}}</td>
+                    <td>{{blog.Author_Name}}</td>
+                    <td>{{blog.Start_Date}}</td>
+                    <td>{{blog.End_Date}}</td>
+                    <td>
+                        <a href="/update/{{blog.pk}}">Update</a>    
+                    </td>
+                    <td>
+                        <a href="/delete/{{blog.pk}}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
